@@ -3,16 +3,19 @@ const router = Router();
 const _ = require('underscore');
 
 const products = require('../data/products.json');
+const saleProducts = require('../data/productsSales.json');
 
+//listar los productos que tenemos en venta
 router.get('/', (req, res) => {
-	res.json(products);
+	res.status(200).json(products);
 })
 
+//Agregas a productos vendidos uno de los productos que tenemos
 router.post('/', (req, res) => {
 	const { name, sellin, price, days } = req.body;
 	if(name && sellin && price && days){
-		const id = products.length + 1;
-		const newProduct = { ...req.body, id };
+		const idType = products.length + 1;
+		const newProduct = { ...req.body, idType };
 		products.push(newProduct)
 		res.send(products);
 	} else {
@@ -22,14 +25,14 @@ router.post('/', (req, res) => {
 
 router.put('/:id', (req, res) => {
 	const { id } = req.params;
-	if(!products.find(obj => obj.id == id)){
+	if(!products.find(obj => obj.idType === id)){
 		res.status(404).json({Warning: `Product with Id: ${id} not found`})
 	}
 	const { name, sellin, price, days } = req.body;
 
 	if(name && sellin && price && days){
 		_.each(products, (product, i) => {
-			if (product.id == id){
+			if (product.idType === id){
 				product.name = name;
 				product.sellin = sellin;
 				product.price = price;
@@ -43,14 +46,16 @@ router.put('/:id', (req, res) => {
 
 })
 
+//vender un producto de los tipos definidos
 router.delete('/:id', (req, res) => {
 	const { id } = req.params;
-	if(!products.find(obj => obj.id == id)){
+	if(!products.find(obj => obj.idType === id)){
 		res.status(404).json({Warning: `Product with Id: ${id} not found`})
 	}
 	_.each(products, (product, i) => {
-		if (product.id == id){
+		if (product.idType === id){
 			products.splice(i, 1);
+			saleProducts.push(product)
 			return res.status(200).send(products);
 		}
 	})

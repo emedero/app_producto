@@ -9,8 +9,10 @@ app.use(morgan('dev'));
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 
-app.use(require('./routes/index'));
+
 app.use('/api/products',require('./routes/products'));
+
+app.use('/api/sale/products',require('./routes/productsSales'));
 
 
 app.listen(app.get('port'), () => {

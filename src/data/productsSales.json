@@ -1,30 +1,56 @@
 [
   {
-    "id": 1,
+    "idType": 1,
     "name": "Cobertura",
-    "sellin": "10",
-    "price": "20",
-    "days": "5"
+    "sellIn": 10,
+    "price": 20
   },
   {
-    "id": 2,
+    "idType": 2,
     "name": "Full cobertura",
-    "sellin": "2",
-    "price": "0",
-    "days": "5"
+    "sellIn": 2,
+    "price": 0
   },
   {
-    "id": 3,
+    "idType": 3,
     "name": "Baja cobertura",
-    "sellin": "5",
-    "price": "7",
-    "days": "5"
+    "sellIn": 5,
+    "price": 7
   },
   {
-    "id": 4,
+    "idType": 4,
     "name": "Mega cobertura",
-    "sellin": "0",
-    "price": "80",
-    "days": "5"
+    "sellIn": 0,
+    "price": 80
+  },
+  {
+    "idType": 5,
+    "name": "Mega cobertura",
+    "sellIn": -1,
+    "price": 80
+  },
+  {
+    "idType": 6,
+    "name": "Full cobertura super duper",
+    "sellIn": 15,
+    "price": 20
+  },
+  {
+    "idType": 7,
+    "name": "Full cobertura super duper",
+    "sellIn": 10,
+    "price": 49
+  },
+  {
+    "idType": 8,
+    "name": "Full cobertura super duper",
+    "sellIn": 5,
+    "price": 49
+  },
+  {
+    "idType": 9,
+    "name": "Super avance",
+    "sellIn": 3,
+    "price": 6
   }
 ]
