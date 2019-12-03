@@ -12,8 +12,10 @@ router.get('/', (req, res) => {
 
 //Agregas a productos vendidos uno de los productos que tenemos
 router.post('/', (req, res) => {
-	const { name, sellin, price, days } = req.body;
-	if(name && sellin && price && days){
+	const { name, sellIn, price } = req.body;
+
+	if(name && sellIn && price){
+		console.log('Hola: ', req.body)
 		const idType = products.length + 1;
 		const newProduct = { ...req.body, idType };
 		products.push(newProduct)
@@ -28,15 +30,14 @@ router.put('/:id', (req, res) => {
 	if(!products.find(obj => obj.idType === id)){
 		res.status(404).json({Warning: `Product with Id: ${id} not found`})
 	}
-	const { name, sellin, price, days } = req.body;
+	const { name, sellIn, price } = req.body;
 
-	if(name && sellin && price && days){
+	if(name && sellIn && price){
 		_.each(products, (product, i) => {
 			if (product.idType === id){
 				product.name = name;
-				product.sellin = sellin;
+				product.sellIn = sellIn;
 				product.price = price;
-				product.days = days;
 				return res.status(200).json(products);
 			}
 		})
