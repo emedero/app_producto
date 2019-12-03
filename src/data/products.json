@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "name": "Cobertura",
+    "sellin": "10",
+    "price": "20",
+    "days": "5"
+  },
+  {
+    "id": 2,
+    "name": "Full cobertura",
+    "sellin": "2",
+    "price": "0",
+    "days": "5"
+  },
+  {
+    "id": 3,
+    "name": "Baja cobertura",
+    "sellin": "5",
+    "price": "7",
+    "days": "5"
+  },
+  {
+    "id": 4,
+    "name": "Mega cobertura",
+    "sellin": "0",
+    "price": "80",
+    "days": "5"
+  }
+]
