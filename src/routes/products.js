@@ -4,10 +4,35 @@ const _ = require('underscore');
 
 const products = require('../data/products.json');
 const saleProducts = require('../data/productsSales.json');
+const productSimulator = require('../data/productSimulator.json');
+
+const rules = require('./../rules/rules');
 
 //listar los productos que tenemos en venta
 router.get('/', (req, res) => {
 	res.status(200).json(products);
+})
+
+let array = [];
+
+router.get('/evaluateProducts/:days', async (req, res) => {
+	const { days } = req.params;
+	array.length = 0;
+	let i = 0;
+	while(i < days){
+		let val = await rules.getData(productSimulator)
+		const obj = {
+			days: i,
+			data: val,
+		}
+		array.push(obj);
+		i++;
+	}
+
+	//
+
+
+	res.status(200).json(array);
 })
 
 //Agregas a productos vendidos uno de los productos que tenemos
@@ -27,14 +52,14 @@ router.post('/', (req, res) => {
 
 router.put('/:id', (req, res) => {
 	const { id } = req.params;
-	if(!products.find(obj => obj.idType === id)){
+	if(!products.find(obj => obj.idType === Number(id))){
 		res.status(404).json({Warning: `Product with Id: ${id} not found`})
 	}
 	const { name, sellIn, price } = req.body;
 
 	if(name && sellIn && price){
 		_.each(products, (product, i) => {
-			if (product.idType === id){
+			if (product.idType === Number(id)){
 				product.name = name;
 				product.sellIn = sellIn;
 				product.price = price;
@@ -50,11 +75,11 @@ router.put('/:id', (req, res) => {
 //vender un producto de los tipos definidos
 router.delete('/:id', (req, res) => {
 	const { id } = req.params;
-	if(!products.find(obj => obj.idType === id)){
+	if(!products.find(obj => obj.idType === Number(id))){
 		res.status(404).json({Warning: `Product with Id: ${id} not found`})
 	}
 	_.each(products, (product, i) => {
-		if (product.idType === id){
+		if (product.idType === Number(id)){
 			products.splice(i, 1);
 			saleProducts.push(product)
 			return res.status(200).send(products);
