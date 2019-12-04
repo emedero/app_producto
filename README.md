@@ -18,10 +18,10 @@ http://localhost:3001/api/sale/products/
 #Usando método POST:
 
 #Agregar productos:
-http://localhost:3000/api/products/
+http://localhost:3001/api/products/
 
 #Agregar productos venidos:
-http://localhost:3000/api/products/sales
+http://localhost:3001/api/products/sales
 
 #Parametros para agregar en el body:
 {
@@ -34,11 +34,11 @@ http://localhost:3000/api/products/sales
 
 #vender un producto segun {:id}
 
-http://localhost:3000/api/products/:id
+http://localhost:3001/api/products/:id
 
 #eliminar un producto vendido {:id}
 
-http://localhost:3000/api/products/sales/:id
+http://localhost:3001/api/products/sales/:id
 
 
 #Ver simulación api:
