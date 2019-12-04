@@ -23,7 +23,7 @@ setInterval(() => {
 	const time = new Date().toLocaleString("en-US", {timeZone: "America/Santiago"}).split(',')[1].replace('PM', '').replace(' ', '');
 	const currentDay = new Date().toLocaleString().split(',')[0].trim()
 	if (time.trim() === new Date(`${currentDay}, 22:00:00`).toLocaleTimeString().replace('PM', '').trim()){
-		rules.updateProducts(products);
+		rules.getData(products);
 	}
 }, 1000);
 
